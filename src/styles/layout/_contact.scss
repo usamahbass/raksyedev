@@ -1,0 +1,106 @@
+.row-contact {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .column-contact {
+    float: left;
+    width: 50%;
+    margin-top: 6px;
+    padding: 20px;
+
+    img {
+      max-width: 100%;
+    }
+
+    .icons-contact {
+      display: flex;
+      justify-content: center;
+      margin: 50px;
+
+      a {
+        color: $primary;
+        margin: 0 50px 0 0;
+        font-size: 2rem;
+
+        &:hover {
+          color: $primary-hover;
+        }
+      }
+    }
+
+    .contact-form {
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        padding: 18px;
+        border: 0;
+        background: #ededed;
+        margin: 7px 0;
+        margin-left: 5px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      textarea {
+        width: 100%;
+        display: block;
+        color: #666;
+        resize: none;
+      }
+
+      input[type="submit"] {
+        padding: 15px 40px;
+        color: #fff;
+        border: 0;
+        background: $primary;
+        font-size: 16px;
+        text-transform: uppercase;
+        margin: 7px 0;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-left: 5px;
+
+        &:hover {
+          background-color: $primary-hover;
+        }
+      }
+
+      h3 {
+        font-weight: normal;
+        margin: 20px 0;
+        margin-top: 30px;
+        text-align: center;
+        padding-bottom: 19px;
+        color: $primary;
+      }
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .row-contact {
+    .column-contact,
+    input[type="submit"] {
+      width: 100%;
+      margin-top: 0;
+      margin-left: 0;
+    }
+
+    .column-contact {
+      .contact-form {
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        input[type="submit"] {
+          width: 100%;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}

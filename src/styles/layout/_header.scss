@@ -1,0 +1,227 @@
+header {
+  display: inline;
+
+  .navbar-content {
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    top: 0;
+    z-index: 9999;
+    padding: 10px;
+    margin-bottom: 50px;
+    box-shadow: 0 0 32px -4px rgba(0, 0, 0, 0.15);
+
+    .navbar-one,
+    .navbar-two {
+      transition: all 0.5s ease-in-out;
+    }
+
+    .navbar-one {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+
+      a {
+        color: #48434f;
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 18px;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+
+    .navbar-two {
+      align-self: center;
+      ul {
+        li {
+          display: inline;
+          list-style: none;
+          margin-right: 20px;
+          .nav-link {
+            padding-bottom: 22px;
+            color: #48434f;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+
+            &:hover {
+              color: $primary;
+            }
+          }
+
+          .nav-actived {
+            color: $primary;
+            border-bottom: 3px solid $primary;
+          }
+        }
+
+        .icons {
+          #btn-theme {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+
+            &:focus {
+              outline: 1px solid #78757a;
+            }
+
+            #moon,
+            #sun {
+              font-size: 1.5em;
+              vertical-align: middle;
+              color: #78757a;
+            }
+
+            #moon {
+              display: inline-block;
+            }
+
+            #sun {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.navbar-active {
+  box-shadow: 0 0 32px -4px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid #e2e8f0;
+  transition: all 0.5s ease-in-out;
+}
+
+.nav-active {
+  margin: 0 40px 0 40px;
+  transition: all 0.5s ease-in-out;
+}
+
+/* 
+  Mobile Header 
+*/
+
+.header {
+  font-size: 1rem;
+  line-height: 1.4;
+
+  .container-header {
+    max-width: 75rem;
+    width: 100%;
+    padding: 0 2rem;
+    margin: 0 auto;
+    z-index: 9999;
+
+    .bottom-nav {
+      display: flex;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      padding: 0.8rem 0;
+      background: white;
+      will-change: transform;
+      transform: translateZ(0);
+      box-shadow: 0 0 32px -4px rgba(0, 0, 0, 0.15);
+
+      &-item {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: center;
+        text-align: center;
+        font-size: 0.8rem;
+        color: #48434f;
+      }
+
+      &-link {
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        color: #48434f;
+      }
+
+      .icons {
+        #btn-theme-mobile {
+          text-decoration: none;
+          cursor: pointer;
+
+          &:focus {
+            outline: none;
+          }
+
+          #moon-mobile,
+          #sun-mobile {
+            font-size: 1rem;
+            color: #48434f;
+          }
+
+          #moon-mobile {
+            display: inline-block;
+          }
+
+          #sun-mobile {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  header {
+    .navbar-content {
+      justify-content: center;
+
+      .navbar-one {
+        position: absolute;
+      }
+
+      .navbar-two {
+        margin-top: 60px;
+        margin-left: 30px;
+      }
+    }
+
+    .nav-active {
+      margin: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    .navbar-content {
+      .navbar-two {
+        ul {
+          li {
+            .nav-link {
+              padding: 7px;
+            }
+          }
+
+          .icons {
+            #btn-theme {
+              #sun,
+              #moon {
+                vertical-align: bottom;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

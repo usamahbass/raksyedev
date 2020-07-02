@@ -1,0 +1,222 @@
+.cards-blog {
+  padding: calc(30px) 0px calc(10px);
+  margin: 0 auto;
+  list-style: none;
+
+  .card-item {
+    position: relative;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    border-image: initial;
+    border-radius: 10px;
+    margin: calc(40px) 0px calc(60px);
+    padding: 10px;
+    transition: all 0.5s ease 0s;
+    background: transparent;
+
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 0.03) 0px 3px 2px;
+      border: 1px solid rgb(236, 235, 234);
+      border-image: initial;
+
+      .card-link {
+        .card-image-out {
+          .card-image-wrapper {
+            transform: scale(1.1);
+            transition: all 0.5s ease 0s;
+          }
+        }
+        .card-title {
+          color: $primary;
+          .card-icons {
+            transform: translateX(0px);
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    &::before {
+      content: "";
+      height: 0px;
+      position: absolute;
+      top: calc(-30px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50%;
+      border-top: 1px solid rgb(236, 235, 234);
+      transition: all 0.5s ease 0s;
+    }
+
+    .card-link {
+      width: 100%;
+      color: rgb(62, 62, 60);
+
+      .card-image-out {
+        position: relative;
+        border: 1px solid rgb(236, 235, 234);
+        border-radius: 10px;
+        overflow: hidden;
+
+        .card-image-wrapper {
+          position: relative;
+          overflow: hidden;
+
+          .card-image-opacity {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            transition: opacity 0.5s ease 0.25s;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            opacity: 0;
+          }
+
+          .card-image-display {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            transition: opacity 0.5s ease 0s;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            opacity: 1;
+          }
+        }
+      }
+
+      .card-title {
+        font-size: 1.7em;
+        line-height: 1.2;
+        padding: 20px 10px 0px;
+
+        &::before {
+          content: "";
+          display: table;
+          margin-bottom: -0.17em;
+        }
+
+        .card-icons {
+          display: inline-block;
+          color: $primary;
+          opacity: 0;
+          transform: translateX(-50%);
+          transition: all 0.5s ease 0s;
+          vertical-align: middle;
+        }
+
+        &::after {
+          content: "";
+          display: table;
+          margin-bottom: -0.11em;
+        }
+      }
+
+      .card-create {
+        line-height: 1.5;
+
+        &::before {
+          content: "";
+          display: table;
+          margin-bottom: -0.42em;
+        }
+
+        &::after {
+          content: "";
+          display: table;
+          margin-top: -0.36em;
+        }
+      }
+
+      .semi-colon {
+        display: flex;
+        -webkit-box-direction: normal;
+        -webkit-box-orient: horizontal;
+        flex-flow: row wrap;
+        font-size: 0.8em;
+        padding: 20px 10px;
+        background: transparent;
+      }
+
+      .semi-colon.card-create {
+        span {
+          display: flex;
+          align-items: center;
+          -webkit-box-align: center;
+          text-transform: uppercase;
+          margin: 5px 10px 5px 0px;
+        }
+      }
+
+      .card-description {
+        padding: 0px 10px;
+        line-height: 1.5;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  ul.cards-blog {
+    max-width: 700px;
+
+    li.card-item {
+      margin: calc(80px) 0px calc(100px);
+      padding: 0px 0px calc(40px);
+
+      &::before {
+        top: calc(-55px);
+      }
+
+      &::after {
+        bottom: calc(-30px);
+      }
+
+      .card-link {
+        .card-title {
+          font-size: 2.5em;
+          padding: calc(24px) calc(40px) 0px;
+        }
+
+        .semi-colon {
+          padding: calc(30px) calc(40px) calc(10px);
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  ul.cards-blog {
+    max-width: 600px;
+
+    li.card-item {
+      margin: calc(60px) 0px calc(80px);
+      padding: 20px;
+
+      &::before {
+        top: calc(-35px);
+      }
+
+      &::after {
+        bottom: calc(-40px);
+      }
+
+      .card-link {
+        .card-title {
+          font-size: calc(2.04em);
+          padding: calc(30px) 20px 0px;
+          transition: all 0.5s ease 0s;
+        }
+
+        .semi-colon {
+          padding: calc(30px) 20px;
+        }
+      }
+    }
+  }
+}
