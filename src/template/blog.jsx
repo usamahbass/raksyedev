@@ -45,11 +45,18 @@ const Blog = props => {
     post: props.data.markdownRemark.html,
   }
 
-  const baseUrl = props.data.site.siteMetadata.siteUrl
-  const url = props.data.site.siteMetadata.siteUrl + props.path
-  const images = props.data.markdownRemark.frontmatter.thumbnails.publicURL
-  const descSite = props.data.markdownRemark.excerpt
-  const key = data.tokategori.map(item => item)
+  const dataBlog = {
+    title: props.data.markdownRemark.frontmatter.title,
+    baseUrl: props.data.site.siteMetadata.siteUrl,
+    url: props.data.site.siteMetadata.siteUrl + props.path,
+    images: props.data.markdownRemark.frontmatter.thumbnails.publicURL,
+    descSite: props.data.markdownRemark.excerpt,
+    key: data.tokategori.map(item => item),
+  }
+
+  const { date, image, author, tokategori, post } = data
+
+  const { title, baseUrl, url, images, descSite, key } = dataBlog
 
   let filterTag = props.data.allMarkdownRemark.group.filter(
     item => item.fieldValue.toLowerCase().indexOf(search.toLowerCase()) !== -1
@@ -58,17 +65,17 @@ const Blog = props => {
   return (
     <React.Fragment>
       <Head
-        title={data.title}
+        title={title}
         desccontent={descSite}
         image={images}
         keycontent={key}
         ogurl={url}
         ogtype="article"
-        ogtitle={data.title}
+        ogtitle={title}
         ogdescription={descSite}
         ogimage={images}
         twitterurl={url}
-        twittertitle={data.title}
+        twittertitle={title}
         twitterdescription={descSite}
         twitterimage={images}
       />
@@ -77,15 +84,15 @@ const Blog = props => {
           <section className="blog-post">
             <div className="blog-post left">
               <BlogPost
-                titlehead={data.title}
-                title={data.title}
-                image={data.image}
-                date={data.date}
-                author={data.author}
-                tokategori={data.tokategori}
-                post={data.post}
+                titlehead={title}
+                title={title}
+                image={image}
+                date={date}
+                author={author}
+                tokategori={tokategori}
+                post={post}
               >
-                {data.tokategori.map((item, index) => (
+                {tokategori.map((item, index) => (
                   <Link
                     key={index}
                     to={`/kategori/${item}`}
@@ -123,18 +130,18 @@ const Blog = props => {
               </section>
 
               <div id="share">
-                <FB title={data.title} url={`${baseUrl}${props.path}`} />
-                <Twitter title={data.title} url={`${baseUrl}${props.path}`} />
-                <Google title={data.title} url={`${baseUrl}${props.path}`} />
+                <FB title={title} url={`${baseUrl}${props.path}`} />
+                <Twitter title={title} url={`${baseUrl}${props.path}`} />
+                <Google title={title} url={`${baseUrl}${props.path}`} />
                 <Linkedin
-                  title={data.title}
+                  title={title}
                   url={`${baseUrl}${props.path}`}
                   source={baseUrl}
                 />
                 <Pinterest
-                  title={data.title}
+                  title={title}
                   url={`${baseUrl}${props.path}`}
-                  media={data.image}
+                  media={image}
                 />
               </div>
             </div>

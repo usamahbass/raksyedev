@@ -41,20 +41,11 @@ const Head = ({
       <meta name="keyword" content={keycontent} />
       <meta name="referrer" content="no-referrer-when-downgrade" />
 
-      {/* OG Tag */}
-
-      <meta property="og:site_name" content="usamahbass" />
-      <meta property="og:description" content={ogdescription} />
       <meta property="og:url" content={ogurl} />
-
-      <meta
-        property="og:title"
-        content={`${ogtitle} || ${data.site.siteMetadata.title}`}
-      />
-      <meta property="og:type" content={ogtype} />
+      <meta property="og:type" content="article" />
+      <meta property="og:title" content={ogtitle} />
+      <meta property="og:description" content={ogdescription} />
       <meta property="og:image" content={ogimage} />
-      <meta property="og:image:width" content="300" />
-      <meta property="og:image:height" content="300" />
 
       {/* Twitter Tag */}
 
