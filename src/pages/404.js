@@ -9,7 +9,7 @@ const NotFound = () => {
       <Head title="Halaman Tidak Ditemukan" />
       <Layout>
         <div className="container mt-10">
-          <h1 className="title has-text-centered">Halaman Tidak Ditemukan</h1>
+          <h1 className="title has-text-centered">Halaman Tidak Ditemukan !</h1>
           <img
             src={NotFoundSvg}
             alt="notfound"
