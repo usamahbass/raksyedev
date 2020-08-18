@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, Suspense } from "react"
 import { graphql, Link } from "gatsby"
 import loadable from "@loadable/component"
 
@@ -8,9 +8,7 @@ import NoResult from "../assets/noresult.svg"
 import Loading from "../components/loading/loading"
 import Box from "../components/box"
 
-const Layout = loadable(() => import("../components/layout"), {
-  fallback: <Loading />,
-})
+const Layout = loadable(() => import("../components/layout"))
 
 export const blogListQuery = graphql`
   query {
@@ -61,29 +59,12 @@ const BlogList = props => {
   })
 
   const posts = props.data.allMarkdownRemark.edges
-  const url = props.data.site.siteMetadata.siteUrl
-  const images = props.data.site.siteMetadata.siteImage
-  const descSite = props.data.site.siteMetadata.description
-  const key = props.data.allMarkdownRemark.group.map(item => item.fieldValue)
+  const title = props.data.site.siteMetadata.title
 
   return (
     <React.Fragment>
-      <Head
-        title="Home"
-        desccontent={descSite}
-        image={images}
-        keycontent={key}
-        ogurl={url}
-        ogtype="blog"
-        ogtitle="Home"
-        ogdescription={descSite}
-        ogimage={images}
-        twitterurl={url}
-        twittertitle="Home"
-        twitterdescription={descSite}
-        twitterimage={images}
-      />
-      <Layout>
+      <Head title={`${title} | Learn and Try !`} type="blog" />
+      <Layout fallback={<Loading />}>
         <main className="blog-wrapper">
           <input
             className="blog-search"

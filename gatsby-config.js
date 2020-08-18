@@ -13,8 +13,7 @@ module.exports = {
       "Tempat berbagai artikel pemograman dan memberikan pengalaman belajar pemograman dari pemula hingga handal",
     siteUrl: "https://raksyedev.netlify.app",
     twitterUsername: "@usamahbass",
-    siteImage:
-      "https://avatars3.githubusercontent.com/u/56109283?s=460&u=f7a5ff506e10005704cc9e3ec490b5b936a8ace5&v=4",
+    siteImage: "https://raksyedev.netlify.app/static/avatar.svg",
   },
   plugins: [
     "gatsby-plugin-react-helmet",

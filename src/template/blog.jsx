@@ -39,7 +39,8 @@ const Blog = ({ data, pageContext, path }) => {
     tokategori: data.markdownRemark.frontmatter.tags,
     post: data.markdownRemark.html,
     baseUrl: data.site.siteMetadata.siteUrl,
-    spoiler: data.markdownRemark.frontmatter.excerpt,
+    spoiler: data.markdownRemark.excerpt,
+    thumbnails: data.markdownRemark.frontmatter.thumbnails.publicURL,
   }
 
   let filterTag = data.allMarkdownRemark.group.filter(
@@ -55,9 +56,8 @@ const Blog = ({ data, pageContext, path }) => {
     post,
     baseUrl,
     spoiler,
+    thumbnails,
   } = dataPost
-
-  console.log(data, pageContext, path)
 
   return (
     <React.Fragment>
@@ -65,13 +65,13 @@ const Blog = ({ data, pageContext, path }) => {
         title={`${title} - ${author}`}
         description={spoiler}
         slug={`${path}`}
-        image={`${baseUrl}${image}`}
+        image={`${baseUrl}${thumbnails}`}
         type="article"
         meta={[
           // -- twitter meta tag additional --
           {
             name: `twitter:imageAlt`,
-            content: "RaksyeDev | Image",
+            content: title,
           },
           {
             name: `twitter:label1`,

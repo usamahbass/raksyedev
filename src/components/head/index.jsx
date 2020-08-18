@@ -3,8 +3,7 @@ import { Helmet } from "react-helmet"
 import { StaticQuery, graphql } from "gatsby"
 import PropTypes from "prop-types"
 
-export const myPhoto =
-  "https://avatars3.githubusercontent.com/u/56109283?s=460&u=f7a5ff506e10005704cc9e3ec490b5b936a8ace5&v=4"
+export const myLogo = "https://raksyedev.netlify.app/static/avatar.svg"
 
 const dataQuery = graphql`
   query SEOQuery {
@@ -17,6 +16,7 @@ const dataQuery = graphql`
         descSite
         twitterUsername
         siteUrl
+        siteImage
       }
     }
   }
@@ -28,7 +28,7 @@ const Head = ({
   meta = [],
   title,
   slug = "",
-  image = myPhoto,
+  image = myLogo,
   type = "blog",
 }) => {
   return (
@@ -37,7 +37,7 @@ const Head = ({
       render={data => {
         const { siteMetadata } = data.site
         const desc = description || siteMetadata.descSite
-        const url = `${siteMetadata.siteUrl}${slug}/`
+        const url = `${siteMetadata.siteUrl}${slug}`
 
         return (
           <Helmet
