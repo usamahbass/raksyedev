@@ -5,13 +5,16 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: "RaksyeDev",
-    author: "RaksyeDev",
+    author: "@usamahbass",
+    name: "Usamah Basalamah",
     description:
       "RaksyeDev: Tempat berbagai artikel tutorial mengenai koding , pemograman dan teknologi",
     descSite:
       "Tempat berbagai artikel pemograman dan memberikan pengalaman belajar pemograman dari pemula hingga handal",
     siteUrl: "https://raksyedev.netlify.app",
-    siteImage: "/src/assets/avatar.png",
+    twitterUsername: "@usamahbass",
+    siteImage:
+      "https://avatars3.githubusercontent.com/u/56109283?s=460&u=f7a5ff506e10005704cc9e3ec490b5b936a8ace5&v=4",
   },
   plugins: [
     "gatsby-plugin-react-helmet",

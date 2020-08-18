@@ -15,20 +15,20 @@ import Google from "../components/share/google"
 import Linkedin from "../components/share/linkedin"
 import Pinterest from "../components/share/pinterest"
 
-const Blog = props => {
+const Blog = ({ data, pageContext, path }) => {
   const [search, setSearch] = useState("")
 
-  const prev = props.pageContext.prev
+  const prev = pageContext.prev
     ? {
-        url: `${props.pageContext.prev.fields.slug}`,
-        title: props.pageContext.prev.frontmatter.title,
+        url: `${pageContext.prev.fields.slug}`,
+        title: pageContext.prev.frontmatter.title,
       }
     : null
 
-  const next = props.pageContext.next
+  const next = pageContext.next
     ? {
-        url: `${props.pageContext.next.fields.slug}`,
-        title: props.pageContext.next.frontmatter.title,
+        url: `${pageContext.next.fields.slug}`,
+        title: pageContext.next.frontmatter.title,
       }
     : null
 
@@ -36,48 +36,57 @@ const Blog = props => {
     setSearch(e.target.value)
   }
 
-  const data = {
-    title: props.data.markdownRemark.frontmatter.title,
-    image: props.data.markdownRemark.frontmatter.avatar.publicURL,
-    date: props.data.markdownRemark.frontmatter.date,
-    author: props.data.markdownRemark.frontmatter.author,
-    tokategori: props.data.markdownRemark.frontmatter.tags,
-    post: props.data.markdownRemark.html,
+  const dataPost = {
+    title: data.markdownRemark.frontmatter.title,
+    image: data.markdownRemark.frontmatter.avatar.publicURL,
+    date: data.markdownRemark.frontmatter.date,
+    author: data.markdownRemark.frontmatter.author,
+    tokategori: data.markdownRemark.frontmatter.tags,
+    post: data.markdownRemark.html,
+    baseUrl: data.site.siteMetadata.siteUrl,
+    spoiler: data.markdownRemark.frontmatter.excerpt,
   }
 
-  const dataBlog = {
-    title: props.data.markdownRemark.frontmatter.title,
-    baseUrl: props.data.site.siteMetadata.siteUrl,
-    url: props.data.site.siteMetadata.siteUrl + props.path,
-    images: props.data.markdownRemark.frontmatter.thumbnails.publicURL,
-    descSite: props.data.markdownRemark.excerpt,
-    key: data.tokategori.map(item => item),
-  }
-
-  const { date, image, author, tokategori, post } = data
-
-  const { title, baseUrl, url, images, descSite, key } = dataBlog
-
-  let filterTag = props.data.allMarkdownRemark.group.filter(
+  let filterTag = data.allMarkdownRemark.group.filter(
     item => item.fieldValue.toLowerCase().indexOf(search.toLowerCase()) !== -1
   )
+
+  const {
+    title,
+    date,
+    image,
+    author,
+    tokategori,
+    post,
+    baseUrl,
+    spoiler,
+  } = dataPost
+
+  console.log(data, pageContext, path)
 
   return (
     <React.Fragment>
       <Head
-        title={title}
-        desccontent={descSite}
-        image={images}
-        keycontent={key}
-        ogurl={url}
-        ogtype="article"
-        ogtitle={title}
-        ogdescription={descSite}
-        ogimage={images}
-        twitterurl={url}
-        twittertitle={title}
-        twitterdescription={descSite}
-        twitterimage={images}
+        title={`${title} - ${author}`}
+        description={spoiler}
+        slug={`${path}`}
+        image={`${baseUrl}${image}`}
+        type="article"
+        meta={[
+          // -- twitter meta tag additional --
+          {
+            name: `twitter:imageAlt`,
+            content: "RaksyeDev | Image",
+          },
+          {
+            name: `twitter:label1`,
+            content: "Written by",
+          },
+          {
+            name: `twitter:data1`,
+            content: data.site.siteMetadata.name,
+          },
+        ]}
       />
       <Layout>
         <article className="container">
@@ -130,17 +139,17 @@ const Blog = props => {
               </section>
 
               <div id="share">
-                <FB title={title} url={`${baseUrl}${props.path}`} />
-                <Twitter title={title} url={`${baseUrl}${props.path}`} />
-                <Google title={title} url={`${baseUrl}${props.path}`} />
+                <FB title={title} url={`${baseUrl}${path}`} />
+                <Twitter title={title} url={`${baseUrl}${path}`} />
+                <Google title={title} url={`${baseUrl}${path}`} />
                 <Linkedin
                   title={title}
-                  url={`${baseUrl}${props.path}`}
+                  url={`${baseUrl}${path}`}
                   source={baseUrl}
                 />
                 <Pinterest
                   title={title}
-                  url={`${baseUrl}${props.path}`}
+                  url={`${baseUrl}${path}`}
                   media={image}
                 />
               </div>
@@ -179,6 +188,7 @@ export const data = graphql`
     site {
       siteMetadata {
         siteUrl
+        name
       }
     }
     allMarkdownRemark(limit: 2000) {

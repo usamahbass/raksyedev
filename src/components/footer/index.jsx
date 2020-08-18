@@ -7,7 +7,7 @@ const Footer = () => {
     query {
       site {
         siteMetadata {
-          author
+          title
         }
       }
     }
@@ -17,7 +17,7 @@ const Footer = () => {
       <div className="content has-text-centered">
         <p>
           <strong style={{ color: "#1d72aa" }}>
-            {data.site.siteMetadata.author}
+            {data.site.siteMetadata.title}
           </strong>{" "}
           <span>
             dibuat dengan penuh cinta{" "}
