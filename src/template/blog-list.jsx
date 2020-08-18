@@ -1,10 +1,12 @@
-import React, { useEffect } from "react"
+import React, { useEffect, Suspense, lazy } from "react"
 import { graphql, Link } from "gatsby"
-import Layout from "../components/layout"
-import Box from "../components/box"
+
 import Head from "../components/head"
 import FilterSearch from "../components/filter"
 import NoResult from "../assets/noresult.svg"
+import Loading from "../components/loading/loading"
+const Layout = lazy(() => import("../components/layout"))
+const Box = lazy(() => import("../components/box"))
 
 export const blogListQuery = graphql`
   query($skip: Int!, $limit: Int!) {
@@ -81,82 +83,88 @@ const BlogList = props => {
         twitterdescription={descSite}
         twitterimage={images}
       />
-      <Layout>
-        <main className="blog-wrapper">
-          <input
-            className="blog-search"
-            type="search"
-            placeholder="&#xF002; Cari"
-          />
-          <p className="counter"></p>
+      <Suspense fallback={<Loading />}>
+        <Layout>
+          <main className="blog-wrapper">
+            <input
+              className="blog-search"
+              type="search"
+              placeholder="&#xF002; Cari"
+            />
+            <p className="counter"></p>
 
-          <ul className="cards-blog">
-            {posts.map(({ node }) => {
-              const title = node.frontmatter.title || node.fields.slug
-              const date = node.frontmatter.date || node.fields.slug
-              const author = node.frontmatter.author || node.fields.slug
-              const tags = node.frontmatter.tags || node.fields.slug
-              const thumbnails =
-                node.frontmatter.thumbnails.publicURL || node.fields.slug
-              const description = node.excerpt
-              return (
-                <article key={node.fields.slug}>
-                  <Box
-                    title={title}
-                    date={date}
-                    author={author}
-                    thumbnails={thumbnails}
-                    desc={description}
-                    to={`${node.fields.slug}`}
-                  >
-                    {tags.map((item, index) => {
-                      return (
-                        <Link key={index} to={`/kategori/${item}`}>
-                          {" "}
-                          <span className="blog-tags">{item}</span>
-                        </Link>
-                      )
-                    })}
-                  </Box>
-                </article>
-              )
-            })}
-            <img src={NoResult} alt="noresult" className="no-result" />
-
-            <nav
-              className="pagination is-centered"
-              role="navigation"
-              aria-label="pagination"
-            >
-              {!isFirst && (
-                <Link to={prevPage} className="pagination-previous" rel="prev">
-                  ← Halaman Sebelumnya
-                </Link>
-              )}
-
-              {!isLast && (
-                <Link to={nextPage} className="pagination-next" rel="next">
-                  Halaman Selanjutnya →
-                </Link>
-              )}
-
-              <ul className="pagination-list">
-                {Array.from({ length: numPages }, (_, i) => (
-                  <li key={`${i + 1}`}>
-                    <Link
-                      to={`/${i === 0 ? "" : i + 1}`}
-                      className="pagination-link"
-                      activeClassName="is-current"
+            <ul className="cards-blog">
+              {posts.map(({ node }) => {
+                const title = node.frontmatter.title || node.fields.slug
+                const date = node.frontmatter.date || node.fields.slug
+                const author = node.frontmatter.author || node.fields.slug
+                const tags = node.frontmatter.tags || node.fields.slug
+                const thumbnails =
+                  node.frontmatter.thumbnails.publicURL || node.fields.slug
+                const description = node.excerpt
+                return (
+                  <article key={node.fields.slug}>
+                    <Box
+                      title={title}
+                      date={date}
+                      author={author}
+                      thumbnails={thumbnails}
+                      desc={description}
+                      to={`${node.fields.slug}`}
                     >
-                      {i + 1}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </ul>
-        </main>
-      </Layout>
+                      {tags.map((item, index) => {
+                        return (
+                          <Link key={index} to={`/kategori/${item}`}>
+                            {" "}
+                            <span className="blog-tags">{item}</span>
+                          </Link>
+                        )
+                      })}
+                    </Box>
+                  </article>
+                )
+              })}
+              <img src={NoResult} alt="noresult" className="no-result" />
+
+              <nav
+                className="pagination is-centered"
+                role="navigation"
+                aria-label="pagination"
+              >
+                {!isFirst && (
+                  <Link
+                    to={prevPage}
+                    className="pagination-previous"
+                    rel="prev"
+                  >
+                    ← Halaman Sebelumnya
+                  </Link>
+                )}
+
+                {!isLast && (
+                  <Link to={nextPage} className="pagination-next" rel="next">
+                    Halaman Selanjutnya →
+                  </Link>
+                )}
+
+                <ul className="pagination-list">
+                  {Array.from({ length: numPages }, (_, i) => (
+                    <li key={`${i + 1}`}>
+                      <Link
+                        to={`/${i === 0 ? "" : i + 1}`}
+                        className="pagination-link"
+                        activeClassName="is-current"
+                      >
+                        {i + 1}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </ul>
+          </main>
+        </Layout>
+      </Suspense>
     </React.Fragment>
   )
 }

@@ -9,11 +9,6 @@ import BlogPost from "../components/blogpost"
 import Head from "../components/head"
 import BackTop from "../components/backtop"
 import BlogPanel from "../components/blogpanel"
-import FB from "../components/share/fb"
-import Twitter from "../components/share/twitter"
-import Google from "../components/share/google"
-import Linkedin from "../components/share/linkedin"
-import Pinterest from "../components/share/pinterest"
 
 const Blog = ({ data, pageContext, path }) => {
   const [search, setSearch] = useState("")
@@ -137,22 +132,6 @@ const Blog = ({ data, pageContext, path }) => {
                   )}
                 </nav>
               </section>
-
-              <div id="share">
-                <FB title={title} url={`${baseUrl}${path}`} />
-                <Twitter title={title} url={`${baseUrl}${path}`} />
-                <Google title={title} url={`${baseUrl}${path}`} />
-                <Linkedin
-                  title={title}
-                  url={`${baseUrl}${path}`}
-                  source={baseUrl}
-                />
-                <Pinterest
-                  title={title}
-                  url={`${baseUrl}${path}`}
-                  media={image}
-                />
-              </div>
             </div>
 
             <div className="blog-post right">
