@@ -3,7 +3,8 @@ import { Helmet } from "react-helmet"
 import { StaticQuery, graphql } from "gatsby"
 import PropTypes from "prop-types"
 
-export const myLogo = "https://raksyedev.netlify.app/static/avatar.svg"
+export const myLogo =
+  "https://res.cloudinary.com/dvsffkyli/image/upload/v1597758904/avatar_gyyrig.svg"
 
 const dataQuery = graphql`
   query SEOQuery {
@@ -68,11 +69,11 @@ const Head = ({
                 content: url,
               },
               {
-                property: `og:title`,
+                property: "og:title",
                 content: title,
               },
               {
-                property: `og:type`,
+                property: "og:type",
                 content: type,
               },
               {
