@@ -13,6 +13,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@loadable/component": "^5.13.1",
     "bulma": "^0.8.2",
     "env-cmd": "^10.1.0",
     "gatsby": "^2.21.0",
