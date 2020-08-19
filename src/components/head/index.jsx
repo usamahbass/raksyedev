@@ -3,8 +3,6 @@ import { Helmet } from "react-helmet"
 import { StaticQuery, graphql } from "gatsby"
 import PropTypes from "prop-types"
 
-export const myLogo = "/src/assets/raksyedev.png"
-
 const dataQuery = graphql`
   query SEOQuery {
     site {
@@ -16,7 +14,6 @@ const dataQuery = graphql`
         descSite
         twitterUsername
         siteUrl
-        siteImage
       }
     }
   }
@@ -28,7 +25,7 @@ const Head = ({
   meta = [],
   title,
   slug = "",
-  image = myLogo,
+  image = "",
   type = "blog",
   keywords = "coding, programmer, teknologi, javascript, react, linux",
 }) => {

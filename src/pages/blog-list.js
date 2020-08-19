@@ -60,10 +60,16 @@ const BlogList = props => {
 
   const posts = props.data.allMarkdownRemark.edges
   const title = props.data.site.siteMetadata.title
+  const image = props.data.site.siteMetadata.siteImage
+  const baseUrl = props.data.site.siteMetadata.siteUrl
 
   return (
     <React.Fragment>
-      <Head title={`${title} - Learn and Try !`} type="blog" />
+      <Head
+        title={`${title} - Learn and Try !`}
+        type="blog"
+        image={`${baseUrl}${image}`}
+      />
       <Layout fallback={<Loading />}>
         <main className="blog-wrapper">
           <input

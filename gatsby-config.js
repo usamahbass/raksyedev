@@ -13,7 +13,7 @@ module.exports = {
       "Tempat berbagai artikel mengenai koding,pemograman dan teknologi",
     siteUrl: "https://raksyedev.netlify.app",
     twitterUsername: "@usamahbass",
-    siteImage: "https://raksyedev.netlify.app/static/avatar.svg",
+    siteImage: "/static/raksyedev.png",
   },
   plugins: [
     "gatsby-plugin-react-helmet",
