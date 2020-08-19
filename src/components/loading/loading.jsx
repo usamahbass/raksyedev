@@ -1,5 +1,5 @@
 import React from "react"
-import Logo from "../../assets/avatar.svg"
+import Logo from "../../assets/raksyedev.png"
 
 const Loading = () => {
   return (
