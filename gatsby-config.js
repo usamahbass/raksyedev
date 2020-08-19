@@ -10,7 +10,7 @@ module.exports = {
     description:
       "RaksyeDev: Tempat berbagai artikel tutorial mengenai koding , pemograman dan teknologi",
     descSite:
-      "Tempat berbagai artikel pemograman dan memberikan pengalaman belajar pemograman dari pemula hingga handal",
+      "Tempat berbagai artikel mengenai koding,pemograman dan teknologi",
     siteUrl: "https://raksyedev.netlify.app",
     twitterUsername: "@usamahbass",
     siteImage: "https://raksyedev.netlify.app/static/avatar.svg",
@@ -50,15 +50,15 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#1d72aa`,
         display: `standalone`,
-        icon: `src/assets/avatar.svg`,
+        icon: `src/assets/raksyedev.png`,
         icons: [
           {
-            src: `/assets/avatar.svg`,
+            src: `/assets/raksyedev.png`,
             sizes: `192x192`,
             type: `image/svg+xml`,
           },
           {
-            src: `assets/avatar.svg`,
+            src: `assets/raksyedev.png`,
             sizes: `512x512`,
             type: `image/svg+xml`,
           },

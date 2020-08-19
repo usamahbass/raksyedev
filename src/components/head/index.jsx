@@ -4,7 +4,7 @@ import { StaticQuery, graphql } from "gatsby"
 import PropTypes from "prop-types"
 
 export const myLogo =
-  "https://res.cloudinary.com/dvsffkyli/image/upload/v1597758904/avatar_gyyrig.svg"
+  "https://res.cloudinary.com/dvsffkyli/image/upload/v1597794379/raksyedev_nrtfyc.png"
 
 const dataQuery = graphql`
   query SEOQuery {
@@ -31,6 +31,7 @@ const Head = ({
   slug = "",
   image = myLogo,
   type = "blog",
+  keywords = "coding, programmer, teknologi, javascript, react, linux",
 }) => {
   return (
     <StaticQuery
@@ -59,6 +60,26 @@ const Head = ({
                 name: "description",
                 content: desc,
               },
+              {
+                name: "image",
+                content: image,
+              },
+              {
+                name: "url",
+                content: url,
+              },
+              {
+                name: "identifier-URL",
+                content: url,
+              },
+              {
+                name: "copyright",
+                content: "Raksye",
+              },
+              {
+                name: "keywords",
+                content: keywords,
+              },
               // -- OG / facebook TAG --
               {
                 name: "og:description",
@@ -79,6 +100,26 @@ const Head = ({
               {
                 property: "og:image",
                 content: image,
+              },
+              {
+                property: "og:image:url",
+                content: image,
+              },
+              {
+                property: "og:image:secure_url",
+                content: image,
+              },
+              {
+                property: "og:image:type",
+                content: "image/png",
+              },
+              {
+                property: "og:image:width",
+                content: "400",
+              },
+              {
+                property: "og:image:height",
+                content: "300",
               },
               // -- Twitter TAG --
               {
@@ -121,7 +162,7 @@ Head.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.array,
-  keywords: PropTypes.arrayOf(PropTypes.string),
+  keywords: PropTypes.string,
   title: PropTypes.string.isRequired,
 }
 

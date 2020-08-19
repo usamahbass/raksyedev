@@ -1,7 +1,7 @@
 import React, { useEffect } from "react"
 import { FaMoon, FaSun, FaHome, FaTags, FaPhoneAlt } from "react-icons/fa"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import Avatar from "../../assets/avatar.svg"
+import Avatar from "../../assets/raksyedev.png"
 import Context from "../context"
 
 const Header = () => {

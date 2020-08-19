@@ -36,11 +36,13 @@ const Blog = ({ data, pageContext, path }) => {
     image: data.markdownRemark.frontmatter.avatar.publicURL,
     date: data.markdownRemark.frontmatter.date,
     author: data.markdownRemark.frontmatter.author,
+    authorNick: data.site.siteMetadata.author,
     tokategori: data.markdownRemark.frontmatter.tags,
     post: data.markdownRemark.html,
     baseUrl: data.site.siteMetadata.siteUrl,
     spoiler: data.markdownRemark.excerpt,
     thumbnails: data.markdownRemark.frontmatter.thumbnails.publicURL,
+    keywords: data.allMarkdownRemark.group.map(item => item["fieldValue"]),
   }
 
   let filterTag = data.allMarkdownRemark.group.filter(
@@ -57,14 +59,17 @@ const Blog = ({ data, pageContext, path }) => {
     baseUrl,
     spoiler,
     thumbnails,
+    authorNick,
+    keywords,
   } = dataPost
 
   return (
     <React.Fragment>
       <Head
-        title={`${title} - ${author}`}
+        title={`${title} - ${authorNick}`}
         description={spoiler}
-        slug={`${path}`}
+        slug={`${path}/`}
+        keywords={keywords.toString()}
         image={`${baseUrl}${thumbnails}`}
         type="article"
         meta={[
@@ -79,7 +84,7 @@ const Blog = ({ data, pageContext, path }) => {
           },
           {
             name: `twitter:data1`,
-            content: data.site.siteMetadata.name,
+            content: authorNick,
           },
         ]}
       />
@@ -168,6 +173,7 @@ export const data = graphql`
       siteMetadata {
         siteUrl
         name
+        author
       }
     }
     allMarkdownRemark(limit: 2000) {
