@@ -113,14 +113,7 @@ const Head = ({
                 property: "og:image:type",
                 content: "image/png",
               },
-              {
-                property: "og:image:width",
-                content: "400",
-              },
-              {
-                property: "og:image:height",
-                content: "300",
-              },
+
               // -- Twitter TAG --
               {
                 property: `twitter:card`,

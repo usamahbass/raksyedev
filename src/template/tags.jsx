@@ -8,6 +8,11 @@ import Head from "../components/head"
 
 export const pageQuery = graphql`
   query($tag: String) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     allMarkdownRemark(
       limit: 2000
       sort: { fields: [frontmatter___date], order: DESC }
@@ -53,7 +58,7 @@ const Tags = ({ pageContext, data }) => {
             const { title, author, date, tags, thumbnails } = node.frontmatter
             return (
               <React.Fragment>
-                <Head title={tags} />
+                <Head title={`Kategori - ${tagHeader}${tagValue}`} />
                 <Box
                   title={title}
                   date={date}

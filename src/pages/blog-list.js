@@ -63,7 +63,7 @@ const BlogList = props => {
 
   return (
     <React.Fragment>
-      <Head title={`${title} | Learn and Try !`} type="blog" />
+      <Head title={`${title} - Learn and Try !`} type="blog" />
       <Layout fallback={<Loading />}>
         <main className="blog-wrapper">
           <input
@@ -90,7 +90,7 @@ const BlogList = props => {
                     author={author}
                     thumbnails={thumbnails}
                     desc={description}
-                    to={`${node.fields.slug}`}
+                    to={`read/${node.fields.slug}`}
                   >
                     {tags.map((item, index) => {
                       return (

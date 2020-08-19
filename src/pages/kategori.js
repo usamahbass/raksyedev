@@ -7,7 +7,10 @@ import Head from "../components/head"
 
 const TagsPage = props => (
   <React.Fragment>
-    <Head title="Kategori" keycontent={props.data.allMarkdownRemark.group[0]} />
+    <Head
+      title={`Kategori - ${props.data.site.siteMetadata.title}`}
+      keywords={props.data.allMarkdownRemark.group[0]}
+    />
     <Layout>
       <div className="container mt-10">
         <h1 className="title has-text-centered">Kategori</h1>

@@ -40,7 +40,7 @@ const Blog = ({ data, pageContext, path }) => {
     tokategori: data.markdownRemark.frontmatter.tags,
     post: data.markdownRemark.html,
     baseUrl: data.site.siteMetadata.siteUrl,
-    spoiler: data.markdownRemark.excerpt,
+    spoiler: data.markdownRemark.excerpt.substr(0, 60),
     thumbnails: data.markdownRemark.frontmatter.thumbnails.publicURL,
     keywords: data.allMarkdownRemark.group.map(item => item["fieldValue"]),
   }
@@ -63,12 +63,14 @@ const Blog = ({ data, pageContext, path }) => {
     keywords,
   } = dataPost
 
+  console.log(path)
+
   return (
     <React.Fragment>
       <Head
         title={`${title} - ${authorNick}`}
-        description={spoiler}
-        slug={`${path}/`}
+        description={`${spoiler}...`}
+        slug={path}
         keywords={keywords.toString()}
         image={`${baseUrl}${thumbnails}`}
         type="article"
