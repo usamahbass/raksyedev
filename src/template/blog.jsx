@@ -10,7 +10,7 @@ import Head from "../components/head"
 import BackTop from "../components/backtop"
 import BlogPanel from "../components/blogpanel"
 
-const Blog = ({ data, pageContext, path }) => {
+const Blog = ({ data, pageContext }) => {
   const [search, setSearch] = useState("")
 
   const prev = pageContext.prev
@@ -63,14 +63,12 @@ const Blog = ({ data, pageContext, path }) => {
     keywords,
   } = dataPost
 
-  console.log(path)
-
   return (
     <React.Fragment>
       <Head
         title={`${title} - ${authorNick}`}
         description={`${spoiler}...`}
-        slug={path}
+        slug={`/read/${pageContext.slug}`}
         keywords={keywords.toString()}
         image={`${baseUrl}${thumbnails}`}
         type="article"

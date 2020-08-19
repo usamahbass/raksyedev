@@ -3,8 +3,7 @@ import { Helmet } from "react-helmet"
 import { StaticQuery, graphql } from "gatsby"
 import PropTypes from "prop-types"
 
-export const myLogo =
-  "https://res.cloudinary.com/dvsffkyli/image/upload/v1597794379/raksyedev_nrtfyc.png"
+export const myLogo = "/src/assets/raksyedev.png"
 
 const dataQuery = graphql`
   query SEOQuery {
