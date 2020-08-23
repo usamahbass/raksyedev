@@ -15,14 +15,14 @@ const Blog = ({ data, pageContext }) => {
 
   const prev = pageContext.prev
     ? {
-        url: `${pageContext.prev.fields.slug}`,
+        url: `/read/${pageContext.prev.fields.slug}`,
         title: pageContext.prev.frontmatter.title,
       }
     : null
 
   const next = pageContext.next
     ? {
-        url: `${pageContext.next.fields.slug}`,
+        url: `/read/${pageContext.next.fields.slug}`,
         title: pageContext.next.frontmatter.title,
       }
     : null

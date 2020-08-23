@@ -63,6 +63,8 @@ const BlogList = props => {
   const image = props.data.site.siteMetadata.siteImage
   const baseUrl = props.data.site.siteMetadata.siteUrl
 
+  console.log(posts)
+
   return (
     <React.Fragment>
       <Head
