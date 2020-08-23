@@ -1,8 +1,8 @@
 ---
 title: "Komponen dan Props di React ?"
-date: "2020-10-23"
+date: "2020-08-23"
 author: "Usamah Basalamah"
-thumbnails: "./react.png"
+thumbnails: "./props-component.png"
 tags: ["reactjs", "javascript"]
 avatar: "../../assets/me.jpg"
 ---
