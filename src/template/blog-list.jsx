@@ -11,7 +11,7 @@ import Box from "../components/box"
 const Layout = loadable(() => import("../components/layout"))
 
 export const blogListQuery = graphql`
-  query {
+  query($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
@@ -22,7 +22,11 @@ export const blogListQuery = graphql`
         siteImage
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: $limit
+      skip: $skip
+    ) {
       group(field: frontmatter___tags) {
         fieldValue
       }
