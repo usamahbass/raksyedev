@@ -1,13 +1,14 @@
 import React from "react"
+import { graphql } from "gatsby"
 import { FaGithub, FaEnvelope, FaLinkedin } from "react-icons/fa"
-import Contact from "../assets/contact/contact.svg"
+import Contact from "../assets/agreement.svg"
 import Layout from "../components/layout"
 import Head from "../components/head"
 
-const Kontak = () => {
+const Kontak = props => {
   return (
     <Layout>
-      <Head title="Kontak" />
+      <Head title={`Kontak - ${props.data.site.siteMetadata.title}`} />
       <section>
         <div class="row-contact">
           <div class="column-contact">
@@ -83,3 +84,13 @@ const Kontak = () => {
 }
 
 export default Kontak
+
+export const pageQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`
