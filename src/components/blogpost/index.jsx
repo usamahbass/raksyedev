@@ -1,5 +1,5 @@
 import React from "react"
-import { MdDateRange } from "react-icons/md"
+import { MdDateRange } from "react-icons/md";
 
 const BlogPost = props => {
   return (

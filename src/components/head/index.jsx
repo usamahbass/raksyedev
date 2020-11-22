@@ -27,7 +27,7 @@ const Head = ({
   slug = "",
   image = "",
   type = "blog",
-  keywords = "coding, programmer, teknologi, javascript, react, linux",
+  keywords = "coding, programmer, teknologi, javascript, react, linux, belajar coding, belajar pemograman"
 }) => {
   return (
     <StaticQuery
