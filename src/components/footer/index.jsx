@@ -21,7 +21,7 @@ const Footer = () => {
           </strong>{" "}
           <span>
             dibuat dengan penuh cinta{" "}
-            <GoHeart style={{ verticalAlign: "middle" }} />
+            <GoHeart style={{ verticalAlign: "text-bottom" }} />
           </span>
         </p>
       </div>
