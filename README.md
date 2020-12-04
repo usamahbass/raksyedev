@@ -1,3 +1,1 @@
-# RAKSYEDEV
-
-static blog progressive web apps with GatsbyJs
+Official RaksyeDev repo for web RaksyeDev , follow Official Instagram [raksyedev](https://instagram.com/raksyedev)
